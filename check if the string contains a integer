@@ -1,0 +1,17 @@
+/* "isdigit" example */
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>  //isdigit() or can use <cctype> c++ header file
+int main ()
+{
+  char str[]="582BC";
+  int year;
+  if (isdigit(str[3]))
+  {
+    year = atoi (str);   // The condition for using "atoi" lies that the first digits must contain integer values else it will not work
+                         // Try using str[]="gh1245af";   -> it will return 0 since 'g' is not an integer
+ 
+    printf ("The year that followed %d was %d.\n",year,year+1);
+  }
+  return 0;
+}
