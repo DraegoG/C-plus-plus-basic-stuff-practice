@@ -1,0 +1,131 @@
+1. "this" keyword: 'this' is a local object pointer in every instance member function containing address of the caller object.
+It is present inside every function of a class and contains the address of the caller object
+
+2. Compile time memory allocation doesn't means that the memory is allocated when the programs compiles, it means the we have already declared that this much memory will be allocated to the program during execution. Memory is only allocated to the program when it starts its execution.
+A variable exists until its parent function executes. When the function stops its execution the variable also wipes out.
+eg of dynamic memory allocation: 
+	int *p= new int;
+	float *q = new float;
+	Class_A *obj = new Class_A; 	//here a new object of Class_A is created and the pointer 'obj' points to it 
+	int *ptr= new int[10]; 			//A pointer to an array of size 10
+
+	int x; cin>>x; int *ptr=new int[x]; //to decide the array size at runtime
+The 'delete' keyword is used to release the memory, acquired by the variables at run time. But it does not deletes the pointer to the variable or array it simply deletes the memory acquired by the dynamic variables or array.
+eg:
+	delete ptr;	  //if ptr points to a variable, then the memory acquired by the variable is released.
+	delete []ptr; //if ptr points to an array, then the memory acquired by the array is released.
+ Some ways to use getline:
+ 		//cin.getline(title,30);	->where title is a character stringof size '30'
+        //other syntax for using the getline:
+        //getline(cin,title) ->this takes '\n' as the delimiter and can be only used if 'title' is a string;
+        //getline(title,20(the size),'#') -> takes '#' as the delimiter
+
+
+3. Method (overloading || overriding || hiding): 
+Method overriding: Same name sake function present in parent as well as child class have same parameters but different definitions.
+Method hiding: method overriding + changing that method's parameters. 
+Method overloading: Same name sake function present in a class but with different parameters.
+Early binding: When the compiler decides at compile time which function to call. eg. When a function is called from the object of the child class and if it exists then the compiler doesn't checks for that function in the base class.
+
+4. Virtual functions: A function made to prevent method overriding.
+Pointer of the base class can also point to the objects of its any decendants classes but the converse is not true.
+If any class is having a virtual function, then for that class the compiler will declare a variable itself named(_vptr) as well as a static array(named 'vtable') containing the address of the functions also the descendents classes will be containing their own 'vtables'. '_vptr' contains the address of the 'vtable' for that respective class.
+	The vtable contains the address of it respective class's virtual functions only.
+
+	By default a function has 'int' return-type.
+
+5. Abstract class: 
+If a class has a do-nothing function then no object can be created for that class. Also if that class is inherited into a child class then its compulsory to override the do-nothing function. To avoid calling the do-nothing function we must make it virtual, and this function is called a pure virtual function,and the class is called an abstract class.
+
+6. Funtion template is also called a generalised function.
+Class template is also called a generalised class.
+
+7. The arguments passed at the time of function calling are called actual arguments and the arguments passed at the time of function definition or function decleration are called formal arguments.
+
+Predefined functions are declared in header files and defined in library files.
+
+8. Why do we need to return values from a function: The return statement is used to terminate or leave the function subroutine at that point and return the control back to the program at the place where it was called.
+
+9. The 3 types of formal arguments(i.e. The arguments are passed inside the function parenthesis):
+	- Ordinary variables of any type: When formal arguments are ordinary variables, it is called function 'call by value'.
+	- Pointer variables
+	- Reference variables: There is a condition with a reference variable that it needs to be initialised when it is made,with a predefined variable(eg. int x=20; int &y=x (note: it is not read as address of x)).It is an internal pointer to 'x'. If we do 'y++' then it will actually increment the value of 'x'(i.e. 21) and not the address of 'y'. A reference variable cannot be updated. When we want to manipulate the data directly the we use call by reference. 
+
+10. In 16-bit architecture (for C language program) by default we get 64KB memory for the program.
+
+11. Inline function: There are various pros and cons of using a function. Pros: A function only takes memory when it is called and releases it when it finishes its task. Cons: It takes time to load it in RAM, therefore increasing the processing time. Therefore to remove this overhead we use the 'inline' keyword. What it does is to check the size of the function, if it is small and thus doesn't takes a lot of memory in RAM then the compiler puts it inside the main(), thus it removes the execution time overhead, but if the size is large then to improve the size/execution overhead the compiler loads it only at the time of function call. 
+
+12. Difference in the structures in C and C++: The structures in C++ can contain functions also but not in C( it is used to achieve encapsulation ).
+
+13. The only difference class and structure is that in the structure the members are by default 'public' where as in a class they are 'private'.
+
+14. Constructor:
+	It is a member function of a class.
+	No return type, so can't use return keyword.
+	It must be an instance member function i.e. It can never be static.
+	Constructor is implicitly invoked when an object is created.
+	Constructor is used to solve problem of initialization.
+
+The compiler automatically creates two types of constructors in a class: 'Default constructor' and the 'Copy constructor'.
+
+If any one constructor is made by the user then the default constructor is not made by the compiler same applies for the 'copy constructor'.
+
+15. Destructor: It is used to release the resources allocated to an object.
+	It is an instance member function of a class.
+	Name is same as that of class, preceded by a tilde(~) symbol.
+	Can never be static.
+	Has no return type.
+	Takes no argument and thus no overloading is possible.
+ Destructor doesn't destroys an object, rather it is the function which is called just before the object is going to be destroyed.
+
+ 16. Static members:
+ 	*Static local variables-> Were in 'C' also
+ 		By default is initialised to zero.
+ 		Has the lifetime throughout the program.	
+
+ 	*Static member variables(members of a class) -> not in C
+ 		Declared inside the class body
+ 		Also called class member variable
+ 		These doesn't belong to any object but to the class.
+ 		There will be only one copy of the static member variable for the whole class.
+ 		A static variable gets the memory only when it is defined and not just declared, but if it is once defined it will get memory whether or not any object of class is created. 
+ 		The static member variable can be declared inside the class and must be defined outside it.
+
+ 	*Static member functions -> not in C
+ 		Preceded with 'static' keyword
+ 		Also called class member functions
+ 		Can be invoked with/without objects
+ 		Can only access static members of the class
+
+17. Operator overloading: 
+	'operator' keyword is used.
+	It is an example of compile time overloading.
+	We cannot overload "sizeof" and "?:"s operators.
+	No other special symbols can be overloaded other than operators like : # or @ etc.
+
+18. STL(Standard Template Library):
+	*	Algorithm
+	*	Iterator
+	*	Container
+
+19. Vector in c++ :
+	Comes under container in STL
+	Dynamic array
+	Capacity increases  as double the previous capacity
+	No need to decide the size during declaration.
+
+20. [] is called subscript operator.
+
+21. Friend function:
+	Is not a member function of a class.
+	Declared inside the class with 'friend' keyword.
+	Defined outside the class to which it is friend.
+	Can access all the members of the class but not directly.
+	Has no caller object.
+	Should be defined without membership label.
+	Friend can become friend to more than one class.
+
+22. 'String' class:
+	Little slower than char array.
+	For easy manipulation use strings.
+	Since string is a data type so we can use almost all operators with it.
