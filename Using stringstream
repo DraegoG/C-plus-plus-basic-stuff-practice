@@ -1,0 +1,55 @@
+/*Purpose of code: Write a string having integers separated with comma. The code returns a vector haing those seperated integers */
+
+#include <sstream>
+#include <vector>
+#include <iostream>
+using namespace std;
+    
+    //Method 1
+/*vector<int> parseInts(string str) {
+   // Complete this function
+    vector<int> v;
+    stringstream sso(str);
+    int a;
+    
+    //sso<<str;
+    while(sso >> a)
+    {
+         v.push_back(a);
+        if(sso.peek()== ',')
+        {
+            sso.ignore();
+        }  
+    }
+        
+       return v;
+}*/
+
+    //Method 2
+vector<int> parseInts(string str) 
+{
+    vector<int> vec;    // Declares a vector to store the ints
+    stringstream sso(str);   // Declares a stringstream object to deal with the modification of the string
+    char ch;
+    int num;
+    
+    while(sso)   // While the stringstream object does not hit a null byte
+    {
+        sso>>num>>ch;   // Extract the comma seperated ints with the extraction >> operator
+        vec.push_back(num);   // Push the int onto the vector
+    } 
+    
+    return vec; // Return the vector of ints
+}
+
+int main() {
+    string str;
+    cin >> str;
+    vector<int> integers = parseInts(str);
+    
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+    
+    return 0;
+}
