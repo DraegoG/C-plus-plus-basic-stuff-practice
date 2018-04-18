@@ -6,6 +6,7 @@ A variable exists until its parent function executes. When the function stops it
 eg of dynamic memory allocation: 
 	int *p= new int;
 	float *q = new float;
+	char *ch="Hello";
 	Class_A *obj = new Class_A; 	//here a new object of Class_A is created and the pointer 'obj' points to it 
 	int *ptr= new int[10]; 			//A pointer to an array of size 10
 
@@ -129,3 +130,26 @@ If any one constructor is made by the user then the default constructor is not m
 	Little slower than char array.
 	For easy manipulation use strings.
 	Since string is a data type so we can use almost all operators with it.
+
+23. Array name is a pointer to the first element of the array.
+	int arr[20];	i.e. arr and &arr[0] are the same things
+	
+	Also, to assign the value to the pointer
+	int *p;
+	p=arr;	//OR p=&arr[0];
+
+	Passing an array to a function:
+	func(int num[]){ ..... }
+
+	int arr[]={1,2,4,8,9,6,5,40};
+
+	func(arr);	//without "[]"
+
+24.	Size of all types of pointer in:
+	16-bit machine = 2 bytes
+	32-bit machine = 4 bytes
+
+	POINTER ARITHMETIC:
+	* Pointers can't be added
+	* Pointers CAN BE subtracted and their difference gives the size of the data type to which they are pointing 
+	*
