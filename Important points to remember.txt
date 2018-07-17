@@ -102,7 +102,7 @@ If any one constructor is made by the user then the default constructor is not m
 	'operator' keyword is used.
 	It is an example of compile time overloading.
 	We cannot overload "sizeof" and "?:"s operators.
-	No other special symbols can be overloaded other than operators like : # or @ etc.
+	No other special symbols like : # or @ etc. ,can be overloaded other than operators.
 
 18. STL(Standard Template Library):
 	*	Algorithm
